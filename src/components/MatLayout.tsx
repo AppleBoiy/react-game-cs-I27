@@ -37,7 +37,7 @@ function MatLayout() {
                         </Button>
 
                         <Button color="inherit" onClick={goToScore}>
-                            Scores
+                            Example Scores API
                         </Button>
                     </Toolbar>
                 </AppBar>
@@ -47,6 +47,7 @@ function MatLayout() {
                     mt: 2,
                 }}
             >
+                {/* Where the each page show up in the same layout */}
                 <Outlet />
             </Container>
         </>

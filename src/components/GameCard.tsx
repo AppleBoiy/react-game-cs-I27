@@ -2,13 +2,13 @@ import myCosImg from '../images/mycos.png'
 import { ICard } from './AllCard'
 import './gameCard.css'
 
-interface CardProps {
+interface GameCardProps {
     card: ICard
     onClick: (cardID: string) => void
     isFlip: boolean
 }
 
-function GameCard({ card, onClick, isFlip }: CardProps) {
+function GameCard({ card, onClick, isFlip }: GameCardProps) {
     const handleClick = () => {
         !isFlip && onClick(card.id!)
     }
