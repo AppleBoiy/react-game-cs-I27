@@ -1,0 +1,34 @@
+{
+    "name": "react-cmu-2023-matching-card",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "vitest",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.11.16",
+        "@mui/material": "^5.13.5",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.11.0"
+    },
+    "devDependencies": {
+        "@testing-library/react": "^14.0.0",
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "@vitejs/plugin-react-swc": "^3.0.0",
+        "happy-dom": "^9.1.7",
+        "husky": "^8.0.3",
+        "prettier": "^2.8.8",
+        "pretty-quick": "^3.1.3",
+        "typescript": "^4.9.3",
+        "vite": "^4.2.0",
+        "vitest": "^0.29.8"
+    }
+}
