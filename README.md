@@ -1,4 +1,4 @@
-# Frontend Internship 2023
+# MyCos Matching Card Game Template
 
 this project created by Vite
 
