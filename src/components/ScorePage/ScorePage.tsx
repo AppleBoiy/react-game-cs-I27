@@ -6,7 +6,7 @@ import ScoreLists from './ScoreLists'
 import { IScoreRequest, getAllAppScores } from '../../api/scoreApi'
 import { ProjectName } from '../../App'
 
-function DemoScorePage() {
+function ScorePage() {
     const [scoresList, setScoresList] = useState<IScoreRequest[]>([])
 
     const handleSubmitSuccess = async () => {
@@ -41,4 +41,4 @@ function DemoScorePage() {
     )
 }
 
-export default DemoScorePage
+export default ScorePage
