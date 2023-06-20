@@ -1,0 +1,13 @@
+{
+    "generator-gitignore-io": {
+        "options": [
+            "intellij+all",
+            "linux",
+            "macos",
+            "node",
+            "react",
+            "visualstudiocode",
+            "windows"
+        ]
+    }
+}
