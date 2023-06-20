@@ -1,6 +1,4 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-import BoardPage from './BoardPage'
 import MatLayout from './MatLayout'
 import ScorePage from './ScorePage/ScorePage'
 import Mygame from '../game/Mygame'
