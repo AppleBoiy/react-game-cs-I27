@@ -75,12 +75,15 @@ export default function InputTap({ toInput, onSubmit }: prop) {
                     {answer.map((char, index) => {
                         if (char === '--') {
                             return (
-                                <span style={{ backgroundColor: 'white' }}>
+                                <span
+                                    key={index}
+                                    style={{ backgroundColor: 'white' }}
+                                >
                                     {toInput[index]}
                                 </span>
                             )
                         } else {
-                            return <span>{char}</span>
+                            return <span key={index}>{char}</span>
                         }
                     })}
                 </div>
