@@ -1,5 +1,4 @@
-import { SyntheticEvent, useEffect, useState } from 'react'
-import style from './game.module.css'
+import { useEffect, useState } from 'react'
 import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
@@ -9,7 +8,14 @@ import {
     default_finish_message,
 } from './component/FinishWindow/interface'
 
-export default function Mygame() {
+function getRandomNumber(): number {
+    const crypto = window.crypto
+    const array = new Uint8Array(1)
+    const [ranNum] = crypto.getRandomValues(array)
+    return ranNum / 255
+}
+
+export default function MyGame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
     const [score, setScore] = useState<number>(0)
     const [answer, setAnswer] = useState<string>('')
@@ -22,9 +28,13 @@ export default function Mygame() {
     useEffect(() => {
         async function getWord() {
             // รับคำศัพท์แบบสุ่ม
-            const range = Math.floor(Math.random() * 7) + 1
+
+            //
+            const ran = getRandomNumber()
+
+            const range = Math.floor(ran * 7) + 1
             const new_word = String(await getRandomWord(range))
-            const hint_point = Math.floor(Math.random() * new_word.length)
+            const hint_point = Math.floor(ran * new_word.length)
 
             setPlayerInput(
                 new_word.split('').map((char, index) => {
