@@ -1,8 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
 import MatLayout from './MatLayout'
 import ScorePage from './ScorePage/ScorePage'
-import MyGame from '../game/MyGame'
+import Mygame from '../game/Mygame'
 
 const router = createBrowserRouter([
     {
@@ -12,7 +11,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
 
-                element: <MyGame />,
+                element: <Mygame />,
             },
             {
                 path: 'scores',
