@@ -69,7 +69,7 @@ export default function InputTap({ toInput, onSubmit }: prop) {
 
     return (
         <>
-            <form onSubmit={onCheck} className={style.input_block}>
+            <form onSubmit={onCheck} className={`${style.input_block}`}>
                 <div className={style.box_input_group}>
                     <input onChange={onInput} value="a" autoFocus />
                     {answer.map((char, index) => {
@@ -80,7 +80,7 @@ export default function InputTap({ toInput, onSubmit }: prop) {
                                 </span>
                             )
                         } else {
-                            return <span>{char}</span>
+                            return <span className="emptyBox">{char}</span>
                         }
                     })}
                 </div>
