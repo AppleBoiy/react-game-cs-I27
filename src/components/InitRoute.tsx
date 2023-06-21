@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
 import MatLayout from './MatLayout'
 import ScorePage from './ScorePage/ScorePage'
 import MyGame from '../game/MyGame'
