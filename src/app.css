@@ -1,4 +1,6 @@
 body {
     margin: 0;
-    background-color: #f8eee7;
+    background-image: url('game/component/images/f57.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
 }
