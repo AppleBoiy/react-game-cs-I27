@@ -1,11 +1,2 @@
-const text = {
-    win: {
-        head: '',
-        content: '',
-    },
-    over: {
-        head: '',
-        content: '',
-    },
-}
+const text: string[] = ['']
 export { text }
