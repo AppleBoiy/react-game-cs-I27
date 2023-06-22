@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react'
 import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
-import getRandomWord from '../api/dictionary'
+import getRandomWord, { getRandomNumber } from '../api/randomModule'
 import FinishWindow from './component/FinishWindow'
 import {
-    FinishMessage,
     default_finish_message,
+    FinishMessage,
 } from './component/FinishWindow/interface'
-
-function getRandomNumber(): number {
-    const crypto = window.crypto
-    const array = new Uint8Array(1)
-    const [ranNum] = crypto.getRandomValues(array)
-    return ranNum / 255
-}
 
 export default function MyGame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
@@ -28,13 +21,10 @@ export default function MyGame() {
     useEffect(() => {
         async function getWord() {
             // รับคำศัพท์แบบสุ่ม
+            const range = Math.floor(getRandomNumber() * 7 + 1)
 
-            //
-            const ran = getRandomNumber()
-
-            const range = Math.floor(ran * 7) + 1
             const new_word = String(await getRandomWord(range))
-            const hint_point = Math.floor(ran * new_word.length)
+            const hint_point = Math.floor(range * new_word.length)
 
             setPlayerInput(
                 new_word.split('').map((char, index) => {
@@ -45,9 +35,9 @@ export default function MyGame() {
             setFinishMessage(default_finish_message)
 
             // เฉลยคำตอบ
-            console.log(new_word)
+            return new_word
         }
-        getWord()
+        getWord().then((answer) => console.log('correct answer is: ', answer))
     }, [score])
 
     // เช็คคำตอบ
