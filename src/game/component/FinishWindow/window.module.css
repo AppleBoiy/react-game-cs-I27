@@ -38,12 +38,16 @@
 }
 
 .btn {
-    padding: 5px 8px;
-    background-color: var(--mui-palette-primary-dark);
-    border: 1px solid var(--mui-palette-primary-dark);
+    padding: 5px 10px;
+    background-color: #362706;
+    border: 1px solid #362706;
     border-radius: 7px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
     color: white;
 }
 

@@ -52,11 +52,6 @@ export default function Meaning({ word }: prop) {
     return (
         <>
             <table className={style.table} border={1}>
-                <thead>
-                    <tr>
-                        <th colSpan={10}>ความหมาย</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
                         <th className={style.order}>No.</th>
@@ -68,7 +63,10 @@ export default function Meaning({ word }: prop) {
                             <tr>
                                 <td className={style.order}>{index + 1}</td>
                                 <td className={style.part}>{detail.part}</td>
-                                <td className={style.meaning}>
+                                <td
+                                    className={style.meaning}
+                                    style={{ textAlign: 'left' }}
+                                >
                                     {detail.meaning}
                                 </td>
                             </tr>

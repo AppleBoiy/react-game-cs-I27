@@ -13,14 +13,14 @@ export default function HealthBar({ hp }: prop) {
                     className={style.show}
                     style={{
                         width: `${(hp[0] / (hp[1] + hp[0] || 1)) * 100}%`,
-                        backgroundColor: 'green',
+                        backgroundColor: '#507742',
                     }}
                 ></span>
                 <span
                     className={style.show}
                     style={{
                         width: `${(hp[1] / (hp[1] + hp[0] || 1)) * 100}%`,
-                        backgroundColor: 'red',
+                        backgroundColor: '#b03b3b',
                     }}
                 ></span>
             </div>

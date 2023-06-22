@@ -79,7 +79,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                         // console.log(index===empty_index[current_empty_index])
                         if (char === '--') {
                             return (
-                                <span style={{ backgroundColor: 'white' }}>
+                                <span style={{ backgroundColor: '#A0C49D' }}>
                                     {toInput[index]}
                                 </span>
                             )
@@ -103,8 +103,8 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                 {!isOver && (
                     <button type="submit" className={style.btn}>
                         {toInput.filter((char) => !char).length !== 0
-                            ? 'ยืนยัน'
-                            : 'ถัดไป'}
+                            ? 'Confirm'
+                            : 'Next'}
                     </button>
                 )}
             </form>

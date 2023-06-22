@@ -50,7 +50,9 @@ export default function Mygame() {
             // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
             // setScore(score + 1)
             setPlayerInput(answer.split(''))
-            setHP([100, 0])
+            if (hp[0] + 10 <= 100) {
+                setHP([hp[0] + 10, hp[1] - 10])
+            }
             setShowMeaning(true)
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
@@ -86,7 +88,7 @@ export default function Mygame() {
             {isOver && <FinishWindow content={finish_message} />}
             <HealthBar hp={hp} />
             <h4 style={{ widows: '100%', textAlign: 'end' }}>
-                คะแนนปัจจุบัน : {score}
+                Your Score : {score}
             </h4>
             <InputTap
                 toInput={player_input}
