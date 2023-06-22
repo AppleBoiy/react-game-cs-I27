@@ -1,23 +1,19 @@
-import { SyntheticEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './game.module.css'
 import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
 import FinishWindow from './component/FinishWindow'
-import {
-    FinishMessage,
-    default_finish_message,
-} from './component/FinishWindow/interface'
+import Meaning from './component/Meaning'
 
 export default function Mygame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
     const [score, setScore] = useState<number>(0)
     const [answer, setAnswer] = useState<string>('')
     const [player_input, setPlayerInput] = useState<string[]>([])
-    const [finish_message, setFinishMessage] = useState<FinishMessage>(
-        default_finish_message,
-    )
-    const [meaning, setMeaning] = useState<string>('')
+    const [finish_message, setFinishMessage] = useState<string>('')
+    const [isOver, setOver] = useState<boolean>(false)
+    const [showMeaning, setShowMeaning] = useState<boolean>(false)
 
     // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
     useEffect(() => {
@@ -33,7 +29,9 @@ export default function Mygame() {
                 }),
             )
             setAnswer(String(new_word))
-            setFinishMessage(default_finish_message)
+            if (score === 0) {
+                setFinishMessage('')
+            }
 
             // เฉลยคำตอบ
             console.log(new_word)
@@ -43,15 +41,23 @@ export default function Mygame() {
 
     // เช็คคำตอบ
     function onCheck(player_answer: string) {
+        if (!player_answer) {
+            setScore(score + 1)
+            setShowMeaning(false)
+            return
+        }
         if (player_answer === answer) {
             // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
             // setScore(score + 1)
+            setPlayerInput(answer.split(''))
             setHP([100, 0])
+            setShowMeaning(true)
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
             setHP([hp[0] - 10, hp[1] + 10])
             if (hp[0] - 10 <= 0) {
-                selectMessage()
+                randomMessage()
+                setOver(true)
                 return
             }
             const not_hint_index: number[] = player_input
@@ -71,41 +77,24 @@ export default function Mygame() {
         }
     }
 
-    function selectMessage() {
+    function randomMessage() {
         // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
     }
 
     return (
         <>
-            {finish_message.head && finish_message.content ? (
-                <FinishWindow
-                    reset={setScore}
-                    score={score}
-                    data={finish_message}
-                    onClose={() => setFinishMessage(default_finish_message)}
-                    word={answer}
-                    meaning={meaning}
-                />
-            ) : (
-                <></>
-            )}
+            {isOver && <FinishWindow content={finish_message} />}
+            <HealthBar hp={hp} />
             <h4 style={{ widows: '100%', textAlign: 'end' }}>
                 คะแนนปัจจุบัน : {score}
             </h4>
-            <InputTap toInput={player_input} onSubmit={onCheck} />
+            <InputTap
+                toInput={player_input}
+                onSubmit={onCheck}
+                isOver={isOver}
+            />
             <hr style={{ margin: '50px 0' }} />
-            <HealthBar hp={hp} />
-            <button
-                onClick={() =>
-                    setFinishMessage({
-                        head: 'barbar',
-                        content:
-                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem suscipit fuga porro voluptate quo doloremque corporis fugiat esse quidem nisi delectus explicabo debitis, laborum nobis, architecto reiciendis a repellendus? Optio.',
-                    })
-                }
-            >
-                จบ
-            </button>
+            {!showMeaning && <Meaning word={answer} />}
         </>
     )
 }

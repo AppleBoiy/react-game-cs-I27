@@ -37,7 +37,7 @@
     text-align: justify;
 }
 
-.window > div > button {
+.btn {
     padding: 5px 8px;
     background-color: var(--mui-palette-primary-dark);
     border: 1px solid var(--mui-palette-primary-dark);
@@ -47,7 +47,7 @@
     color: white;
 }
 
-.window > div > button:hover {
+.btn:hover {
     scale: 1.05;
     background-color: var(--mui-palette-primary-light);
 }
