@@ -1,5 +1,5 @@
 import { FinishMessage } from './interface'
-import style from './window.module.css'
+import style from 'src/game/component/FinishWindow/window.module.css'
 import React from 'react'
 
 type prop = {
