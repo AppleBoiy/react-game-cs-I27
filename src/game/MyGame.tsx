@@ -70,7 +70,7 @@ export default function MyGame() {
                 .filter((char) => char !== -1)
             if (not_hint_index.length > 1) {
                 const hint_point = Math.floor(
-                    Math.random() * not_hint_index.length,
+                    getRandomNumber() * not_hint_index.length,
                 )
                 let new_player_input = [...player_input]
                 new_player_input[not_hint_index[hint_point]] =
