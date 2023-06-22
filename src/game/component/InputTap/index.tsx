@@ -9,23 +9,23 @@ type prop = {
 export default function InputTap({ toInput, onSubmit }: prop) {
     const [answer, setAnswer] = useState<string[]>(
         toInput.map((char) => (char ? '--' : '')),
-    )
+    );
     const [empty_index, setEmptyIndex] = useState<number[]>(
         toInput
             .map((char, index) => (char ? -1 : index))
             .filter((char) => char !== -1),
-    )
-    const [current_empty_index, setCurrentEmptyIndex] = useState<number>(0)
+    );
+    const [current_empty_index, setCurrentEmptyIndex] = useState<number>(0);
 
     // เช็คการเปลี่ยนแปลงของ Prop เพื่ออัพเดทค่าต่างๆ
     useEffect(() => {
-        setAnswer(toInput.map((char) => (char ? '--' : '')))
+        setAnswer(toInput.map((char) => (char ? '--' : '')));
         setEmptyIndex(
             toInput
                 .map((char, index) => (char ? -1 : index))
                 .filter((char) => char !== -1),
         )
-        setCurrentEmptyIndex(0)
+        setCurrentEmptyIndex(0);
     }, [toInput])
 
     // รับค่าจาก Keyboard
@@ -33,29 +33,29 @@ export default function InputTap({ toInput, onSubmit }: prop) {
         // เพิ่ม
         if (event.target.value) {
             if (current_empty_index < empty_index.length) {
-                let new_answer = [...answer]
-                const player_type = event.target.value.slice(1)
+                let new_answer = [...answer];
+                const player_type = event.target.value.slice(1);
                 if (player_type !== ' ') {
                     new_answer[empty_index[current_empty_index]] =
-                        event.target.value.slice(1)
-                    setAnswer(new_answer)
-                    setCurrentEmptyIndex(current_empty_index + 1)
+                        event.target.value.slice(1);
+                    setAnswer(new_answer);
+                    setCurrentEmptyIndex(current_empty_index + 1);
                 }
             }
             // ลด
         } else {
             if (current_empty_index > 0) {
-                let new_answer = [...answer]
-                new_answer[empty_index[current_empty_index - 1]] = ''
-                setAnswer(new_answer)
-                setCurrentEmptyIndex(current_empty_index - 1)
+                let new_answer = [...answer];
+                new_answer[empty_index[current_empty_index - 1]] = '';
+                setAnswer(new_answer);
+                setCurrentEmptyIndex(current_empty_index - 1);
             }
         }
     }
 
     // ส่งคำตอบ
     function onCheck(event: SyntheticEvent) {
-        event.preventDefault()
+        event.preventDefault();
         if (!answer.includes('')) {
             onSubmit(
                 answer
@@ -63,7 +63,7 @@ export default function InputTap({ toInput, onSubmit }: prop) {
                         return char === '--' ? toInput[index] : char
                     })
                     .join(''),
-            )
+            );
         }
     }
 
