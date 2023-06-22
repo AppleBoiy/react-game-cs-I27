@@ -83,6 +83,8 @@ export default function Mygame() {
                     score={score}
                     data={finish_message}
                     onClose={() => setFinishMessage(default_finish_message)}
+                    word={answer}
+                    meaning={meaning}
                 />
             ) : (
                 <></>
@@ -93,7 +95,17 @@ export default function Mygame() {
             <InputTap toInput={player_input} onSubmit={onCheck} />
             <hr style={{ margin: '50px 0' }} />
             <HealthBar hp={hp} />
-            {/* <button onClick={()=>setFinishMessage({ head: "barbar", content: "lorem" })}>จบ</button> */}
+            <button
+                onClick={() =>
+                    setFinishMessage({
+                        head: 'barbar',
+                        content:
+                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem suscipit fuga porro voluptate quo doloremque corporis fugiat esse quidem nisi delectus explicabo debitis, laborum nobis, architecto reiciendis a repellendus? Optio.',
+                    })
+                }
+            >
+                จบ
+            </button>
         </>
     )
 }

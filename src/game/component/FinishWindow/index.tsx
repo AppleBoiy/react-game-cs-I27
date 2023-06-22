@@ -6,6 +6,8 @@ type prop = {
     reset: React.Dispatch<number>
     score: number
     onClose: Function
+    meaning: string
+    word: string
 }
 
 export default function FinishWindow({ data, reset, score, onClose }: prop) {
