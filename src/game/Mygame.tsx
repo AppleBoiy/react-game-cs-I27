@@ -3,13 +3,20 @@ import style from './game.module.css'
 import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
+import FinishWindow from './component/FinishWindow'
+import {
+    FinishMessage,
+    default_finish_message,
+} from './component/FinishWindow/interface'
 
 export default function Mygame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
     const [score, setScore] = useState<number>(0)
     const [answer, setAnswer] = useState<string>('')
     const [player_input, setPlayerInput] = useState<string[]>([])
-    const [stop, setStop] = useState<boolean>(false)
+    const [finish_message, setFinishMessage] = useState<FinishMessage>(
+        default_finish_message,
+    )
 
     // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
     useEffect(() => {
@@ -25,6 +32,7 @@ export default function Mygame() {
                 }),
             )
             setAnswer(String(new_word))
+            setFinishMessage(default_finish_message)
 
             // เฉลยคำตอบ
             console.log(new_word)
@@ -41,6 +49,10 @@ export default function Mygame() {
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
             setHP([hp[0] - 10, hp[1] + 10])
+            if (hp[0] - 10 <= 0) {
+                selectMessage()
+                return
+            }
             const not_hint_index: number[] = player_input
                 .map((char, index) => {
                     return char ? -1 : index
@@ -57,8 +69,22 @@ export default function Mygame() {
             }
         }
     }
+
+    function selectMessage() {
+        // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
+    }
     return (
         <>
+            {finish_message.head && finish_message.content && (
+                <FinishWindow
+                    reset={setScore}
+                    score={score}
+                    data={finish_message}
+                />
+            )}
+            <h4 style={{ widows: '100%', textAlign: 'end' }}>
+                คะแนนปัจจุบัน : {score}
+            </h4>
             <InputTap toInput={player_input} onSubmit={onCheck} />
             <hr style={{ margin: '50px 0' }} />
             <HealthBar hp={hp} />
