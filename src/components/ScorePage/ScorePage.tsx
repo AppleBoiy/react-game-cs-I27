@@ -7,22 +7,22 @@ import { IScoreRequest, getAllAppScores } from '../../api/scoreApi'
 import { ProjectName } from '../../App'
 
 function ScorePage() {
-    const [scoresList, setScoresList] = useState<IScoreRequest[]>([])
+    const [scoresList, setScoresList] = useState<IScoreRequest[]>([]);
 
     const handleSubmitSuccess = async () => {
-        const result = await getAllAppScores(ProjectName)
-        setScoresList(result!)
+        const result = await getAllAppScores(ProjectName);
+        setScoresList(result!);
     }
 
     const handleDeleteSuccess = (deleteScoreID: number) => {
         setScoresList((prev) => {
-            return prev.filter((score) => score.id !== deleteScoreID)
+            return prev.filter((score) => score.id !== deleteScoreID);
         })
     }
 
     useEffect(() => {
         getAllAppScores(ProjectName).then((result) => {
-            setScoresList(result!)
+            setScoresList(result!);
         })
     }, [])
 

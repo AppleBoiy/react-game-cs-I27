@@ -5,7 +5,7 @@ import { ProjectName } from '../../App'
 import { IScoreRequest, addAppScore } from '../../api/scoreApi'
 
 function ScoreForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false);
 
     const [requestBody, setRequestBody] = useState<IScoreRequest>({
         name: '',
@@ -14,7 +14,7 @@ function ScoreForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
     })
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('event.target.name: ', event.target.value)
+        console.log('event.target.name: ', event.target.value);
         setRequestBody((prev) => {
             return {
                 ...prev,
@@ -24,14 +24,14 @@ function ScoreForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
     }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+        event.preventDefault();
         try {
-            setLoading(true)
-            await addAppScore(requestBody)
-            onSubmitSuccess()
+            setLoading(true);
+            await addAppScore(requestBody);
+            onSubmitSuccess();
         } catch (err) {
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
 

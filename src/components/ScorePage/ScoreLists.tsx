@@ -17,8 +17,8 @@ interface ScoreListsProps {
 function ScoreLists({ scoreLists, onDeleteSuccess }: ScoreListsProps) {
     const onClickDelete = async (scoreID: number) => {
         try {
-            await deleteAppScore(scoreID)
-            onDeleteSuccess(scoreID)
+            await deleteAppScore(scoreID);
+            onDeleteSuccess(scoreID);
         } catch (err) {}
     }
 
