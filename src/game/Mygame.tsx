@@ -17,6 +17,7 @@ export default function Mygame() {
     const [finish_message, setFinishMessage] = useState<FinishMessage>(
         default_finish_message,
     )
+    const [meaning, setMeaning] = useState<string>('')
 
     // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
     useEffect(() => {
@@ -44,7 +45,7 @@ export default function Mygame() {
     function onCheck(player_answer: string) {
         if (player_answer === answer) {
             // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
-            setScore(score + 1)
+            // setScore(score + 1)
             setHP([100, 0])
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
@@ -73,14 +74,20 @@ export default function Mygame() {
     function selectMessage() {
         // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
     }
+
     return (
         <>
-            {finish_message.head && finish_message.content && (
+            {finish_message.head && finish_message.content ? (
                 <FinishWindow
                     reset={setScore}
                     score={score}
                     data={finish_message}
+                    onClose={() => setFinishMessage(default_finish_message)}
+                    word={answer}
+                    meaning={meaning}
                 />
+            ) : (
+                <></>
             )}
             <h4 style={{ widows: '100%', textAlign: 'end' }}>
                 คะแนนปัจจุบัน : {score}
@@ -88,6 +95,17 @@ export default function Mygame() {
             <InputTap toInput={player_input} onSubmit={onCheck} />
             <hr style={{ margin: '50px 0' }} />
             <HealthBar hp={hp} />
+            <button
+                onClick={() =>
+                    setFinishMessage({
+                        head: 'barbar',
+                        content:
+                            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem suscipit fuga porro voluptate quo doloremque corporis fugiat esse quidem nisi delectus explicabo debitis, laborum nobis, architecto reiciendis a repellendus? Optio.',
+                    })
+                }
+            >
+                จบ
+            </button>
         </>
     )
 }

@@ -5,9 +5,12 @@ type prop = {
     data: FinishMessage
     reset: React.Dispatch<number>
     score: number
+    onClose: Function
+    meaning: string
+    word: string
 }
 
-export default function FinishWindow({ data, reset, score }: prop) {
+export default function FinishWindow({ data, reset, score, onClose }: prop) {
     return (
         <>
             <div className={style.background}>
@@ -16,7 +19,14 @@ export default function FinishWindow({ data, reset, score }: prop) {
                     <p>{data.content}</p>
                     <h4>คะแนนที่ทำได้ {score}</h4>
                     <div className={style.btn_grp}>
-                        <button onClick={() => reset(0)}>เล่นอีกครั้ง</button>
+                        <button
+                            onClick={() => {
+                                reset(0)
+                                onClose()
+                            }}
+                        >
+                            เล่นอีกครั้ง
+                        </button>
                     </div>
                 </div>
             </div>

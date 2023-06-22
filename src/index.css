@@ -1,4 +1,13 @@
+:root {
+    --bg-color: white;
+}
+
 body {
+    background-color: var(--bg-color);
     margin: 0;
     box-sizing: border-box;
+}
+
+body.dark-mode {
+    --bg-color: black;
 }
