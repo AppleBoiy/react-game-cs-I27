@@ -1,15 +1,10 @@
 {
-  "compilerOptions": {
-    "composite": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
-    "outDir": "./public",
-    "types": [
-      "vitest/globals"
-    ]
-  },
-  "include": [
-    "vite.config.ts"
-  ]
+    "compilerOptions": {
+        "composite": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "types": ["vitest/globals"]
+    },
+    "include": ["vite.config.ts"]
 }
