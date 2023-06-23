@@ -28,15 +28,33 @@ function MatLayout() {
                             variant="h6"
                             component="div"
                             sx={{ flexGrow: 1 }}
+                            style={{
+                                fontFamily:
+                                    "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+                            }}
                         >
                             {ProjectName}
                         </Typography>
 
-                        <Button color="inherit" onClick={gotoBoard}>
+                        <Button
+                            color="inherit"
+                            onClick={gotoBoard}
+                            style={{
+                                fontFamily:
+                                    "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+                            }}
+                        >
                             Game
                         </Button>
 
-                        <Button color="inherit" onClick={goToScore}>
+                        <Button
+                            color="inherit"
+                            onClick={goToScore}
+                            style={{
+                                fontFamily:
+                                    "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif",
+                            }}
+                        >
                             Example Scores API
                         </Button>
                     </Toolbar>
