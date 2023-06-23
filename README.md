@@ -11,7 +11,7 @@ of this project is to create a simple game using React.js. The game is inspired 
 
 The React Game CS-I27 is a web-based game built using React.js. The game utilizes the `random-words` package to generate
 random words for the player to guess. The word meanings are obtained from
-the [DictionaryAPI](https://api.dictionaryapi.dev/api/v2/entries/en).
+the [DictionaryAPI](https://dictionaryapi.dev).
 
 The main features of the game include:
 
