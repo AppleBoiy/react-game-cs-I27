@@ -14,7 +14,6 @@ function ScoreForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
   });
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("event.target.name: ", event.target.value);
     setRequestBody((prev) => {
       return {
         ...prev,
@@ -49,11 +48,7 @@ function ScoreForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
 
         <TextField label="Score" name="score" onChange={onChange} />
 
-        <TextField
-          label="Player Name"
-          name="name"
-          onChange={onChange}
-        />
+        <TextField label="Player Name" name="name" onChange={onChange} />
       </Stack>
 
       <Button

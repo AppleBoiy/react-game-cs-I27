@@ -24,10 +24,9 @@ export default function Meaning({ word, setMeaning }: prop) {
             `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
             {
               method: "GET",
-            }
+            },
           );
           const result: any = (await response.json())[0];
-          console.log(result);
           if (result) {
             const new_data: Word_Detail[] = [];
             (
@@ -53,7 +52,7 @@ export default function Meaning({ word, setMeaning }: prop) {
       setLoad(false);
     }
 
-    getMeaning().then((r) => console.log(r));
+    getMeaning();
   }, [word]);
 
   if (load) {
