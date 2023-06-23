@@ -5,7 +5,6 @@ import HealthBar from './component/HealthBar'
 import getRandomWord, { getRandomNumber } from '../api/randomModule'
 import FinishWindow from './component/FinishWindow'
 import Meaning, { Word_Detail } from './component/Meaning'
-import { default_finish_message } from './component/FinishWindow/interface'
 import History, { HistoryType } from './component/History'
 
 export default function Mygame() {
@@ -15,7 +14,6 @@ export default function Mygame() {
     const [player_input, setPlayerInput] = useState<string[]>([])
     const [finish_message, setFinishMessage] = useState<string>('')
     const [isOver, setOver] = useState<boolean>(false)
-    const [showMeaning, setShowMeaning] = useState<boolean>(false)
     const [history, setHistory] = useState<HistoryType[]>([])
     const [meaning, setMeaning] = useState<Word_Detail[]>([])
 
@@ -52,7 +50,6 @@ export default function Mygame() {
         }
         if (!player_answer) {
             setScore(score + 1)
-            setShowMeaning(false)
             setHistory([...history, { word: answer, meaning }])
             return
         }
@@ -60,16 +57,12 @@ export default function Mygame() {
             // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
             // setScore(score + 1)
             setPlayerInput(answer.split(''))
-            if (hp[0] + 10 <= 100) {
-                setHP([hp[0] + 10, hp[1] - 10])
-            }
-            setShowMeaning(true)
+            setHP([100, 0])
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
             setHP([hp[0] - 10, hp[1] + 10]);
             if (hp[0] - 10 <= 0) {
                 setOver(true)
-                setShowMeaning(true)
                 setPlayerInput(answer.split(''))
                 return
             }
@@ -90,16 +83,11 @@ export default function Mygame() {
         }
     }
 
-    function randomMessage() {
-        // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
-    }
-
     function reset() {
         if (score === 0) {
             window.location.reload()
         }
         setScore(0)
-        setShowMeaning(false)
         setHP([100, 0])
         setHistory([])
     }
@@ -119,7 +107,7 @@ export default function Mygame() {
                 isOver={isOver}
             />
             <hr style={{ margin: '50px 0' }} />
-            {showMeaning && <Meaning word={answer} setMeaning={setMeaning} />}
+            <Meaning word={answer} setMeaning={setMeaning} />
             {history.length > 0 && <History data={history} />}
         </>
     )

@@ -29,30 +29,29 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
     setCurrentEmptyIndex(0);
   }, [toInput]);
 
-  // รับค่าจาก Keyboard
-  function onInput(event: React.ChangeEvent<HTMLInputElement>) {
-    // เพิ่ม
-    if (event.target.value) {
-      if (current_empty_index < empty_index.length) {
-        let new_answer = [...answer];
-        const player_type = event.target.value.slice(1);
-        if (player_type !== " ") {
-          new_answer[empty_index[current_empty_index]] = event.target.value
-            .slice(1)
-            .toLowerCase();
-          setAnswer(new_answer);
-          setCurrentEmptyIndex(current_empty_index + 1);
+    // รับค่าจาก Keyboard
+    function onInput(event: React.ChangeEvent<HTMLInputElement>) {
+        // เพิ่ม
+        if (event.target.value) {
+            if (current_empty_index < empty_index.length) {
+                let new_answer = [...answer]
+                const player_type = event.target.value.slice(1)
+                if (player_type !== ' ') {
+                    new_answer[empty_index[current_empty_index]] =
+                        event.target.value.slice(1).toLowerCase()
+                    setAnswer(new_answer)
+                    setCurrentEmptyIndex(current_empty_index + 1)
+                }
+            }
+            // ลด
+        } else {
+            if (current_empty_index > 0) {
+                let new_answer = [...answer]
+                new_answer[empty_index[current_empty_index - 1]] = ''
+                setAnswer(new_answer)
+                setCurrentEmptyIndex(current_empty_index - 1)
+            }
         }
-      }
-      // ลด
-    } else {
-      if (current_empty_index > 0) {
-        let new_answer = [...answer];
-        new_answer[empty_index[current_empty_index - 1]] = "";
-        setAnswer(new_answer);
-        setCurrentEmptyIndex(current_empty_index - 1);
-      }
-    }
   }
 
   // ส่งคำตอบ
