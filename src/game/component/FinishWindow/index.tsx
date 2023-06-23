@@ -1,6 +1,4 @@
-import { FinishMessage } from "./interface";
 import style from "./window.module.css";
-import React from "react";
 
 type prop = {
   content: string;

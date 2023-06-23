@@ -6,7 +6,7 @@ import FinishWindow from "./component/FinishWindow";
 import Meaning, { Word_Detail } from "./component/Meaning";
 import History, { HistoryType } from "./component/History";
 
-export default function Mygame() {
+export default function MyGame() {
   const [hp, setHP] = useState<[number, number]>([100, 0]);
   const [score, setScore] = useState<number>(0);
   const [answer, setAnswer] = useState<string>("");
