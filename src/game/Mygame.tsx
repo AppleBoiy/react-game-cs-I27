@@ -5,7 +5,6 @@ import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
 import FinishWindow from './component/FinishWindow'
 import Meaning, { Word_Detail } from './component/Meaning'
-import { default_finish_message } from './component/FinishWindow/interface'
 import History, { HistoryType } from './component/History'
 
 export default function Mygame() {
