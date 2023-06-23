@@ -25,7 +25,7 @@ export default function FinishWindow({ content, onReset }: prop) {
           className={style.btn}
           style={{ fontSize: "1.25rem" }}
         >
-          เริ่มใหม่อีกครั้ง
+          Retry
         </button>
       </div>
       <hr style={{ margin: "30px 0" }} />

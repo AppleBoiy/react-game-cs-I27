@@ -11,11 +11,14 @@
   justify-content: center;
   background-color: rgb(199, 199, 199);
   padding: 10px;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   text-align: center;
   /* vertical-align: bottom; */
   border-radius: 10px;
+  font-size: large;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bolder;
 }
 
 .input_block {
@@ -45,6 +48,8 @@
   margin-top: 50px;
   transition: all 0.3s ease-in-out;
   color: white;
+  width: 80px;
+  height: 40px;
 }
 
 .btn:hover {

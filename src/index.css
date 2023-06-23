@@ -3,12 +3,9 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-body.dark-mode {
-  --bg-color: black;
+    background: rgb(179,199,51);
+    background: linear-gradient(90deg, rgba(179,199,51,1) 0%, rgba(246,242,210,1) 0%);
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

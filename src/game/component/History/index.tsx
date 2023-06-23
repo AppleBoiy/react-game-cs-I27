@@ -44,7 +44,7 @@ export default function History({ data }: prop) {
                         <thead>
                             <tr>
                                 <th colSpan={10}>Answer: {index + 1}</th>
-                            </tr>
+                            </tr>   
                             <tr>
                                 <th colSpan={10}>
                                     <div className={style.slidebar}>

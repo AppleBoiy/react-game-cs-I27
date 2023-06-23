@@ -19,18 +19,23 @@
 }
 
 .btn {
-  padding: 5px 8px;
-  background-color: var(--mui-palette-primary-dark);
-  border: 1px solid var(--mui-palette-primary-dark);
-  border-radius: 7px;
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin-top: 20px;
-  transition: all 0.2s ease-in-out;
-  color: white;
+    padding: 5px 10px;
+    background-color: #362706;
+    border: 1px solid #362706;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 1rem;
+    margin-top: 50px;
+    transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 .btn:hover {
-  scale: 1.05;
-  background-color: var(--mui-palette-primary-light);
+    scale: 1.2;
+    border-radius: 10px;
+    border-color: black;
+    cursor: pointer;
+    background-color: #362706ea;
+  
 }
