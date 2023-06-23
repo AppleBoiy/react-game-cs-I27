@@ -3,6 +3,7 @@ import style from './style.module.css'
 
 type prop = {
     word: string
+    setMeaning: React.Dispatch<Word_Detail[]>
 }
 
 type Word_Detail = {
@@ -10,10 +11,13 @@ type Word_Detail = {
     meaning: string
 }
 
-export default function Meaning({ word }: prop) {
+export default function Meaning({ word, setMeaning }: prop) {
     const [data, setData] = useState<Word_Detail[]>([])
+    const [load, setLoad] = useState<boolean>(false)
+
     useEffect(() => {
         async function getMeaning() {
+            setLoad(true)
             if (word) {
                 try {
                     const response = await fetch(
@@ -40,14 +44,22 @@ export default function Meaning({ word }: prop) {
                             })
                         })
                         setData(new_data)
+                        setMeaning(new_data)
                     }
                 } catch (error) {
                     console.log(error)
                 }
             }
+            setLoad(false)
         }
         getMeaning()
     }, [word])
+
+    if (load) {
+        return (
+            <h1 style={{ width: '100%', textAlign: 'center' }}>loading...</h1>
+        )
+    }
 
     return (
         <>
@@ -77,3 +89,5 @@ export default function Meaning({ word }: prop) {
         </>
     )
 }
+
+export type { Word_Detail }

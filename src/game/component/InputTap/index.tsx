@@ -38,7 +38,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                 const player_type = event.target.value.slice(1)
                 if (player_type !== ' ') {
                     new_answer[empty_index[current_empty_index]] =
-                        event.target.value.slice(1)
+                        event.target.value.slice(1).toLowerCase()
                     setAnswer(new_answer)
                     setCurrentEmptyIndex(current_empty_index + 1)
                 }

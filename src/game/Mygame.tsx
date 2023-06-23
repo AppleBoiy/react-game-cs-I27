@@ -4,7 +4,9 @@ import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
 import FinishWindow from './component/FinishWindow'
-import Meaning from './component/Meaning'
+import Meaning, { Word_Detail } from './component/Meaning'
+import { default_finish_message } from './component/FinishWindow/interface'
+import History, { HistoryType } from './component/History'
 
 export default function Mygame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
@@ -14,6 +16,8 @@ export default function Mygame() {
     const [finish_message, setFinishMessage] = useState<string>('')
     const [isOver, setOver] = useState<boolean>(false)
     const [showMeaning, setShowMeaning] = useState<boolean>(false)
+    const [history, setHistory] = useState<HistoryType[]>([])
+    const [meaning, setMeaning] = useState<Word_Detail[]>([])
 
     // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
     useEffect(() => {
@@ -41,9 +45,13 @@ export default function Mygame() {
 
     // เช็คคำตอบ
     function onCheck(player_answer: string) {
+        if (isOver) {
+            return
+        }
         if (!player_answer) {
             setScore(score + 1)
             setShowMeaning(false)
+            setHistory([...history, { word: answer, meaning }])
             return
         }
         if (player_answer === answer) {
@@ -58,8 +66,9 @@ export default function Mygame() {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
             setHP([hp[0] - 10, hp[1] + 10])
             if (hp[0] - 10 <= 0) {
-                randomMessage()
                 setOver(true)
+                setShowMeaning(true)
+                setPlayerInput(answer.split(''))
                 return
             }
             const not_hint_index: number[] = player_input
@@ -83,9 +92,21 @@ export default function Mygame() {
         // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
     }
 
+    function reset() {
+        if (score === 0) {
+            window.location.reload()
+        }
+        setScore(0)
+        setShowMeaning(false)
+        setHP([100, 0])
+        setHistory([])
+    }
+
     return (
         <>
-            {isOver && <FinishWindow content={finish_message} />}
+            {isOver && (
+                <FinishWindow content={finish_message} onReset={reset} />
+            )}
             <HealthBar hp={hp} />
             <h4 style={{ widows: '100%', textAlign: 'end' }}>
                 Your Score : {score}
@@ -96,7 +117,8 @@ export default function Mygame() {
                 isOver={isOver}
             />
             <hr style={{ margin: '50px 0' }} />
-            {!showMeaning && <Meaning word={answer} />}
+            {showMeaning && <Meaning word={answer} setMeaning={setMeaning} />}
+            {history.length > 0 && <History data={history} />}
         </>
     )
 }
