@@ -9,12 +9,12 @@ type prop = {
 
 export default function InputTap({ toInput, onSubmit, isOver }: prop) {
   const [answer, setAnswer] = useState<string[]>(
-    toInput.map((char) => (char ? "--" : "")),
+    toInput.map((char) => (char ? "--" : ""))
   );
   const [empty_index, setEmptyIndex] = useState<number[]>(
     toInput
       .map((char, index) => (char ? -1 : index))
-      .filter((char) => char !== -1),
+      .filter((char) => char !== -1)
   );
   const [current_empty_index, setCurrentEmptyIndex] = useState<number>(0);
 
@@ -24,7 +24,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
     setEmptyIndex(
       toInput
         .map((char, index) => (char ? -1 : index))
-        .filter((char) => char !== -1),
+        .filter((char) => char !== -1)
     );
     setCurrentEmptyIndex(0);
   }, [toInput]);
@@ -63,7 +63,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
           .map((char, index) => {
             return char === "--" ? toInput[index] : char;
           })
-          .join(""),
+          .join("")
       );
     } else if (!toInput.includes("")) {
       onSubmit("");
@@ -78,21 +78,20 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
           {answer.map((char, index) => {
             if (char === "--") {
               return (
-                <span key={index} style={{ backgroundColor: "#E1BEA8" }}>
-                  {toInput[index]}
-                </span>
+                <span key={`answer-${index}`} style={{ backgroundColor: "#E1BEA8" }}>
+                {toInput[index]}
+              </span>
               );
             } else {
               return (
-                <span key={index} style={{
-                    backgroundColor:
-                        index ===
-                        empty_index[current_empty_index]
-                            ? '#efa300'
-                            : 'lightgray',
+                <span key={`answer-${index}`} style={{
+                  backgroundColor:
+                    index === empty_index[current_empty_index]
+                      ? "#efa300"
+                      : "lightgray"
                 }}>
-                  {char}
-                </span>
+                {char}
+              </span>
               );
             }
           })}
@@ -105,4 +104,5 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
       </form>
     </>
   );
+
 }

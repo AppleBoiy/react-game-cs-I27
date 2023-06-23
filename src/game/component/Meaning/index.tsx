@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 
 type prop = {
@@ -7,6 +7,7 @@ type prop = {
 };
 
 type Word_Detail = {
+  id: string;
   part: string;
   meaning: string;
 };
@@ -23,8 +24,8 @@ export default function Meaning({ word, setMeaning }: prop) {
           const response = await fetch(
             `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
             {
-              method: "GET",
-            },
+              method: "GET"
+            }
           );
           const result: any = (await response.json())[0];
           if (result) {
@@ -37,8 +38,9 @@ export default function Meaning({ word, setMeaning }: prop) {
             ).forEach((type) => {
               type.definitions.forEach((meaning) => {
                 new_data.push({
+                  id: Date.now().toString(),
                   part: type.partOfSpeech,
-                  meaning: meaning.definition,
+                  meaning: meaning.definition
                 });
               });
             });
@@ -52,33 +54,37 @@ export default function Meaning({ word, setMeaning }: prop) {
       setLoad(false);
     }
 
-    getMeaning();
+    getMeaning().then(r => {
+    });
+
   }, [word]);
 
   if (load) {
-    return <h1 style={{ width: "100%", textAlign: "center" }}>loading...</h1>;
+    return (
+      <h1 style={{ width: "100%", textAlign: "center" }}>loading...</h1>
+    );
   }
 
   return (
     <>
       <table className={style.table} border={1}>
         <tbody>
-          <tr>
-            <th className={style.order}>No.</th>
-            <th className={style.part}>Part Of Speech</th>
-            <th className={style.meaning}>Meaning</th>
-          </tr>
-          {data.map((detail, index) => {
-            return (
-              <tr key={index}>
-                <td className={style.order}>{index + 1}</td>
-                <td className={style.part}>{detail.part}</td>
-                <td className={style.meaning} style={{ textAlign: "left" }}>
-                  {detail.meaning}
-                </td>
-              </tr>
-            );
-          })}
+        <tr>
+          <th className={style.order}>No.</th>
+          <th className={style.part}>Part Of Speech</th>
+          <th className={style.meaning}>Meaning</th>
+        </tr>
+        {data.map((detail) => {
+          return (
+            <tr key={detail.id}> {/* Use the unique ID as the key */}
+              <td className={style.order}>{detail.id}</td>
+              <td className={style.part}>{detail.part}</td>
+              <td className={style.meaning} style={{ textAlign: "left" }}>
+                {detail.meaning}
+              </td>
+            </tr>
+          );
+        })}
         </tbody>
       </table>
     </>
