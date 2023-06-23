@@ -1,6 +1,14 @@
 body {
     margin: 0;
     background-image: url('game/component/images/f57.jpg');
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-position: top left;
+    /* opacity:0.7 ; */
+}
+
+.bg {
+    margin: 0;
+    background-image: url('game/component/images/f57.jpg');
+    background-repeat: no-repeat;
+    background-position: top right;
 }
