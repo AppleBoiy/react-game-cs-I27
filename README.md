@@ -1,4 +1,4 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=CSCMU-65s_react-game-cs-I27&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=CSCMU-65s_react-game-cs-I27)
+<p align="right"> <img src="https://sonarcloud.io/api/project_badges/measure?project=CSCMU-65s_react-game-cs-I27&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=CSCMU-65s_react-game-cs-I27"  alt=""> </p>
 
 # Words Confuse
 
