@@ -78,7 +78,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
           {answer.map((char, index) => {
             if (char === "--") {
               return (
-                <span key={index} style={{ backgroundColor: "#C9B4A6", border: "2px solid #584030" }}>
+                <span key={index} style={{ backgroundColor: "#E1BEA8", border: "3px solid rgb(231,216,158) " }}>
                   {toInput[index]}
                 </span>
               );
