@@ -1,4 +1,5 @@
 .table {
+  width: 80%;
   border-collapse: collapse;
   border-radius: 10px;
   border-style: hidden;
@@ -8,11 +9,22 @@
   background-color: #C9B4A6;
 }
 
-.slide_bar {
+.slidebar {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+}
+
+.slidebar span{
+  padding: 0px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.slidebar span:hover {
+  scale: 1.05;
+  color: rgb(250, 147, 11);
 }
 
 .table th {
@@ -42,7 +54,7 @@
   cursor: pointer;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1rem;
-  margin-top: 10px;
+  margin-bottom: 20px;
   transition: all 0.3s ease-in-out;
   color: white;
 }

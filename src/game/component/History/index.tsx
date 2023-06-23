@@ -44,6 +44,9 @@ export default function History({ data }: prop) {
                         <thead>
                             <tr>
                                 <th colSpan={10} className={style.header}>Answer: {index + 1}</th>
+                            </tr>
+                            <tr>
+                                <th colSpan={10}>{data[index].word}</th>
                             </tr>   
                             <tr>
                                 <th colSpan={10}>
