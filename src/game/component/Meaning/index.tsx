@@ -77,7 +77,7 @@ export default function Meaning({ word, setMeaning }: prop) {
         </tr>
         {data.map((detail) => {
           return (
-            <tr key={detail.id}>
+            <tr key={detail.id + detail.meaning}>
               <td className={style.order}>{detail.id}</td>
               <td className={style.part}>{detail.part}</td>
               <td className={style.meaning} style={{ textAlign: "left" }}>

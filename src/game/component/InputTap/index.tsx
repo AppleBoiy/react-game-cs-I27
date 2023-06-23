@@ -84,7 +84,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
             } else {
               return (
                 <span
-                  key={char}
+                  key={char + index}
                   style={{
                     backgroundColor:
                       index === emptyIndex[currentEmptyIndex]

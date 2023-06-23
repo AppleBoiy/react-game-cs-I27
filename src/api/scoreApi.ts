@@ -6,7 +6,7 @@ const APIUrl =
 const headers = {
   Accept: "*/*",
   _SESSIONID: SESSION_ID,
-  "Content-Type": "application/json",
+  "Content-Type": "application/json"
 };
 
 export interface IScoreRequest {
@@ -15,11 +15,12 @@ export interface IScoreRequest {
   score: number;
   name: string;
 }
+
 export const addAppScore = async ({
-  projectName,
-  score,
-  name,
-}: IScoreRequest) => {
+                                    projectName,
+                                    score,
+                                    name
+                                  }: IScoreRequest) => {
   try {
     const response = await fetch(APIUrl + "/AddAppScore", {
       method: "POST",
@@ -29,8 +30,8 @@ export const addAppScore = async ({
         name: name,
         projectName: projectName,
         score: score,
-        ip: "string",
-      }),
+        ip: "string"
+      })
     });
 
     const data: IScoreRequest = await response.json();
@@ -49,14 +50,12 @@ export const getAllAppScores = async (projectName: string) => {
         headers: {
           Accept: "*/*",
           _SESSIONID: SESSION_ID,
-          "Content-Type": "application/json",
-        },
-      },
+          "Content-Type": "application/json"
+        }
+      }
     );
 
     const data: IScoreRequest[] = await response.json();
-    console.log(data);
-
     return data;
   } catch (error) {
     console.error(error);
@@ -67,7 +66,7 @@ export const deleteAppScore = async (scoreID: number) => {
   try {
     const response = await fetch(`${APIUrl}/DeleteAppScore/${scoreID}`, {
       method: "DELETE",
-      headers: headers,
+      headers: headers
     });
 
     if (!response.ok) {
