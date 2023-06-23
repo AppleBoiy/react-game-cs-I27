@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.bar.shake {
+    animation: horizontal-shaking 0.25s ease;
+}
+
 @keyframes horizontal-shaking {
     0% {
         transform: translateX(0);

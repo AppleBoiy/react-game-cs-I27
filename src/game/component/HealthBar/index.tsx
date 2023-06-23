@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import style from './style.module.css'
 
 type prop = {
@@ -5,9 +6,17 @@ type prop = {
 }
 
 export default function HealthBar({ hp }: prop) {
+    const [shake, setShake] = useState<boolean>(false)
+
+    useEffect(() => {
+        setShake(true)
+        setTimeout(() => {
+            setShake(false)
+        }, 500)
+    }, [hp])
     return (
         <>
-            <div className={style.bar}>
+            <div className={`${style.bar} ${shake ? style.shake : ''}`}>
                 <span className={style.title}>{hp[0]}%</span>
                 <span
                     className={style.show}
