@@ -1,22 +1,22 @@
-import { SyntheticEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './game.module.css'
 import InputTap from './component/InputTap'
 import HealthBar from './component/HealthBar'
 import getRandomWord from '../api/dictionary'
 import FinishWindow from './component/FinishWindow'
-import {
-    FinishMessage,
-    default_finish_message,
-} from './component/FinishWindow/interface'
+import Meaning, { Word_Detail } from './component/Meaning'
+import { default_finish_message } from './component/FinishWindow/interface'
+import History, { HistoryType } from './component/History'
 
 export default function Mygame() {
     const [hp, setHP] = useState<[number, number]>([100, 0])
     const [score, setScore] = useState<number>(0)
     const [answer, setAnswer] = useState<string>('')
     const [player_input, setPlayerInput] = useState<string[]>([])
-    const [finish_message, setFinishMessage] = useState<FinishMessage>(
-        default_finish_message,
-    )
+    const [finish_message, setFinishMessage] = useState<string>('')
+    const [isOver, setOver] = useState<boolean>(false)
+    const [history, setHistory] = useState<HistoryType[]>([])
+    const [meaning, setMeaning] = useState<Word_Detail[]>([])
 
     // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
     useEffect(() => {
@@ -32,7 +32,9 @@ export default function Mygame() {
                 }),
             )
             setAnswer(String(new_word))
-            setFinishMessage(default_finish_message)
+            if (score === 0) {
+                setFinishMessage('')
+            }
 
             // เฉลยคำตอบ
             console.log(new_word)
@@ -42,15 +44,25 @@ export default function Mygame() {
 
     // เช็คคำตอบ
     function onCheck(player_answer: string) {
+        if (isOver) {
+            return
+        }
+        if (!player_answer) {
+            setScore(score + 1)
+            setHistory([...history, { word: answer, meaning }])
+            return
+        }
         if (player_answer === answer) {
             // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
-            setScore(score + 1)
+            // setScore(score + 1)
+            setPlayerInput(answer.split(''))
             setHP([100, 0])
         } else {
             // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
             setHP([hp[0] - 10, hp[1] + 10])
             if (hp[0] - 10 <= 0) {
-                selectMessage()
+                setOver(true)
+                setPlayerInput(answer.split(''))
                 return
             }
             const not_hint_index: number[] = player_input
@@ -70,24 +82,32 @@ export default function Mygame() {
         }
     }
 
-    function selectMessage() {
-        // กรุณาใช้ state setFinishMessage เพื่อทำการแสดงข้อความ
+    function reset() {
+        if (score === 0) {
+            window.location.reload()
+        }
+        setScore(0)
+        setHP([100, 0])
+        setHistory([])
     }
+
     return (
         <>
-            {finish_message.head && finish_message.content && (
-                <FinishWindow
-                    reset={setScore}
-                    score={score}
-                    data={finish_message}
-                />
+            {isOver && (
+                <FinishWindow content={finish_message} onReset={reset} />
             )}
+            <HealthBar hp={hp} />
             <h4 style={{ widows: '100%', textAlign: 'end' }}>
                 คะแนนปัจจุบัน : {score}
             </h4>
-            <InputTap toInput={player_input} onSubmit={onCheck} />
+            <InputTap
+                toInput={player_input}
+                onSubmit={onCheck}
+                isOver={isOver}
+            />
             <hr style={{ margin: '50px 0' }} />
-            <HealthBar hp={hp} />
+            <Meaning word={answer} setMeaning={setMeaning} />
+            {history.length > 0 && <History data={history} />}
         </>
     )
 }
