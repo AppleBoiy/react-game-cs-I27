@@ -53,4 +53,18 @@
 .btn:hover {
     scale: 1.2;
     background-color: var(--mui-palette-primary-light);
+    padding: 0.2rem 0.75rem;
+    border-radius: 10px;
+    border-color: black;
+    margin-top: 1rem;
+    cursor: pointer;
+    width: 90px;
+    height: 50px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(52, 52, 147, 0.7805497198879552) 35%,
+        rgba(0, 212, 255, 1) 100%
+    );
 }

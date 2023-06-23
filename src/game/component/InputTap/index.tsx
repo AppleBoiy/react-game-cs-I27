@@ -85,15 +85,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                             )
                         } else {
                             return (
-                                <span
-                                    style={{
-                                        backgroundColor:
-                                            index ===
-                                            empty_index[current_empty_index]
-                                                ? 'lightgreen'
-                                                : 'lightgray',
-                                    }}
-                                >
+                                <span style={{ backgroundColor: '#94618E' }}>
                                     {char}
                                 </span>
                             )
