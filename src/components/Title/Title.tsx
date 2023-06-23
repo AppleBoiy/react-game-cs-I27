@@ -1,3 +1,3 @@
-const Title = () => <h1>Memory Card Game</h1>
+const Title = () => <h1>Memory Card Game</h1>;
 
-export default Title
+export default Title;

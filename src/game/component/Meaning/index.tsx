@@ -53,7 +53,7 @@ export default function Meaning({ word, setMeaning }: prop) {
       setLoad(false);
     }
 
-    getMeaning();
+    getMeaning().then((r) => console.log(r));
   }, [word]);
 
   if (load) {

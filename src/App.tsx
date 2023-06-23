@@ -1,10 +1,9 @@
-import MatApp from './components/MatApp'
+import MatApp from "./components/MatApp";
 
-export const ProjectName = 'Words Confuse'
+export const ProjectName = "Words Confuse";
 
 function App() {
-
-    return <MatApp />
+  return <MatApp />;
 }
 
-export default App
+export default App;
