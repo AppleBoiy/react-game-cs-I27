@@ -1,0 +1,29 @@
+.table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 0.5px #666;
+}
+
+.table tr > * {
+    padding: 5px;
+    /* color: #b03b3b; */
+}
+
+.table th:first-child {
+    background-color: #484338;
+    border-top-left-radius: 10px;
+}
+
+.table th:last-child {
+    background-color: #484338;
+    border-top-right-radius: 10px;
+}
+
+.table th {
+    background-color: #484338;
+    color: aliceblue;
+}

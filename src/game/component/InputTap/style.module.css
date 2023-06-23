@@ -7,7 +7,6 @@
     /* width: ; */
     /* width: 9rem; */
 }
-
 .box_input_group > span {
     display: flex;
     align-items: center;
@@ -38,8 +37,20 @@
 }
 
 .btn {
-    padding: 0.2rem 0.75rem;
-    border-radius: 5px;
-    margin-top: 1rem;
+    padding: 5px 10px;
+    background-color: #362706;
+    border: 1px solid #362706;
+    border-radius: 7px;
     cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    font-size: 1rem;
+    margin-top: 50px;
+    transition: all 0.3s ease-in-out;
+    color: white;
+}
+
+.btn:hover {
+    scale: 1.2;
+    background-color: var(--mui-palette-primary-light);
 }

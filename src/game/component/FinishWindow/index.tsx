@@ -3,24 +3,32 @@ import style from './window.module.css'
 import React from 'react'
 
 type prop = {
-    data: FinishMessage
-    reset: React.Dispatch<number>
-    score: number
+    content: string
+    onReset: Function
 }
 
-export default function FinishWindow({ data, reset, score }: prop) {
+export default function FinishWindow({ content, onReset }: prop) {
     return (
         <>
-            <div className={style.background}>
-                <div className={style.window}>
-                    <h3>{data.head}</h3>
-                    <p>{data.content}</p>
-                    <h4>คะแนนที่ทำได้ {score}</h4>
-                    <div className={style.btn_grp}>
-                        <button onClick={() => reset(0)}>เล่นอีกครั้ง</button>
-                    </div>
-                </div>
+            <hr style={{ margin: '30px 0' }} />
+            <h1
+                style={{ width: '100%', textAlign: 'center', color: '#c11000' }}
+            >
+                Game Over!!
+            </h1>
+            <h2 style={{ width: '100%', textAlign: 'center', color: 'gray' }}>
+                {content}
+            </h2>
+            <div style={{ width: '100%', textAlign: 'center' }}>
+                <button
+                    onClick={() => onReset()}
+                    className={style.btn}
+                    style={{ fontSize: '1.25rem' }}
+                >
+                    Retry
+                </button>
             </div>
+            <hr style={{ margin: '30px 0' }} />
         </>
     )
 }
