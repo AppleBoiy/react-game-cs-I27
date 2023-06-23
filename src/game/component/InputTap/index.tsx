@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import style from "./style.module.css";
+import { getRandomNumber } from "../../../api/randomModule";
 
 type prop = {
   toInput: string[];
@@ -11,14 +12,13 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
   const [answer, setAnswer] = useState<string[]>(
     toInput.map((char) => (char ? "--" : ""))
   );
-  const [empty_index, setEmptyIndex] = useState<number[]>(
+  const [emptyIndex, setEmptyIndex] = useState<number[]>(
     toInput
       .map((char, index) => (char ? -1 : index))
       .filter((char) => char !== -1)
   );
-  const [current_empty_index, setCurrentEmptyIndex] = useState<number>(0);
+  const [currentEmptyIndex, setCurrentEmptyIndex] = useState<number>(0);
 
-  // เช็คการเปลี่ยนแปลงของ Prop เพื่ออัพเดทค่าต่างๆ
   useEffect(() => {
     setAnswer(toInput.map((char) => (char ? "--" : "")));
     setEmptyIndex(
@@ -29,32 +29,29 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
     setCurrentEmptyIndex(0);
   }, [toInput]);
 
-  // รับค่าจาก Keyboard
   function onInput(event: React.ChangeEvent<HTMLInputElement>) {
-    // เพิ่ม
     if (event.target.value) {
-      if (current_empty_index < empty_index.length) {
-        let new_answer = [...answer];
-        const player_type = event.target.value.slice(1);
-        if (player_type !== " ") {
-          new_answer[empty_index[current_empty_index]] = event.target.value
-            .slice(1).toLowerCase();
-          setAnswer(new_answer);
-          setCurrentEmptyIndex(current_empty_index + 1);
+      if (currentEmptyIndex < emptyIndex.length) {
+        let newAnswer = [...answer];
+        const playerType = event.target.value.slice(1);
+        if (playerType !== " ") {
+          newAnswer[emptyIndex[currentEmptyIndex]] = event.target.value
+            .slice(1)
+            .toLowerCase();
+          setAnswer(newAnswer);
+          setCurrentEmptyIndex(currentEmptyIndex + 1);
         }
       }
-      // ลด
     } else {
-      if (current_empty_index > 0) {
-        let new_answer = [...answer];
-        new_answer[empty_index[current_empty_index - 1]] = "";
-        setAnswer(new_answer);
-        setCurrentEmptyIndex(current_empty_index - 1);
+      if (currentEmptyIndex > 0) {
+        let newAnswer = [...answer];
+        newAnswer[emptyIndex[currentEmptyIndex - 1]] = "";
+        setAnswer(newAnswer);
+        setCurrentEmptyIndex(currentEmptyIndex - 1);
       }
     }
   }
 
-  // ส่งคำตอบ
   function onCheck(event: SyntheticEvent) {
     event.preventDefault();
     if (!answer.includes("") && toInput.includes("")) {
@@ -72,26 +69,32 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
 
   return (
     <>
-      <form onSubmit={onCheck} className={`${style.input_block}`}>
+      <form onSubmit={onCheck} className={style.input_block}>
         <div className={style.box_input_group}>
           <input onChange={onInput} value="a" autoFocus />
           {answer.map((char, index) => {
             if (char === "--") {
               return (
-                <span key={`answer-${index}`} style={{ backgroundColor: "#E1BEA8" }}>
-                {toInput[index]}
-              </span>
+                <span
+                  key={getRandomNumber(true)}
+                  style={{ backgroundColor: "#E1BEA8" }}
+                >
+                  {toInput[index]}
+                </span>
               );
             } else {
               return (
-                <span key={`answer-${index}`} style={{
-                  backgroundColor:
-                    index === empty_index[current_empty_index]
-                      ? "#efa300"
-                      : "lightgray"
-                }}>
-                {char}
-              </span>
+                <span
+                  key={getRandomNumber(true)}
+                  style={{
+                    backgroundColor:
+                      index === emptyIndex[currentEmptyIndex]
+                        ? "#efa300"
+                        : "lightgray"
+                  }}
+                >
+                  {char}
+                </span>
               );
             }
           })}
@@ -104,5 +107,4 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
       </form>
     </>
   );
-
 }

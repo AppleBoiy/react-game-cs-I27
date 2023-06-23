@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
+import { getRandomNumber } from "../../../api/randomModule";
 
 type prop = {
   word: string;
@@ -7,7 +8,7 @@ type prop = {
 };
 
 type Word_Detail = {
-  id: string;
+  id: number;
   part: string;
   meaning: string;
 };
@@ -31,14 +32,14 @@ export default function Meaning({ word, setMeaning }: prop) {
           if (result) {
             const new_data: Word_Detail[] = [];
             (
-              result.meanings as {
+              result["meanings"] as {
                 definitions: { definition: string }[];
                 partOfSpeech: string;
               }[]
             ).forEach((type) => {
               type.definitions.forEach((meaning) => {
                 new_data.push({
-                  id: Date.now().toString(),
+                  id: getRandomNumber(true),
                   part: type.partOfSpeech,
                   meaning: meaning.definition
                 });
@@ -54,7 +55,7 @@ export default function Meaning({ word, setMeaning }: prop) {
       setLoad(false);
     }
 
-    getMeaning().then(r => {
+    getMeaning().then(_ => {
     });
 
   }, [word]);
@@ -76,7 +77,7 @@ export default function Meaning({ word, setMeaning }: prop) {
         </tr>
         {data.map((detail) => {
           return (
-            <tr key={detail.id}> {/* Use the unique ID as the key */}
+            <tr key={detail.id}>
               <td className={style.order}>{detail.id}</td>
               <td className={style.part}>{detail.part}</td>
               <td className={style.meaning} style={{ textAlign: "left" }}>

@@ -9,9 +9,7 @@ export default function FinishWindow({ content, onReset }: prop) {
   return (
     <>
       <hr style={{ margin: "30px 0" }} />
-      <h1
-        style={{ width: "100%", textAlign: "center", color: "#c11000" }}
-      >
+      <h1 style={{ width: "100%", textAlign: "center", color: "#c11000" }}>
         Game Over!!
       </h1>
       <h2 style={{ width: "100%", textAlign: "center", color: "gray" }}>
@@ -30,3 +28,5 @@ export default function FinishWindow({ content, onReset }: prop) {
     </>
   );
 }
+
+

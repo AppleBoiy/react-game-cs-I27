@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Word_Detail } from "../Meaning";
 import style from "./style.module.css";
+import { getRandomNumber } from "../../../api/randomModule";
 
 export type HistoryType = {
   word: string;
@@ -23,27 +24,23 @@ export default function History({ data }: prop) {
     <>
       {!showHistory ? (
         <div style={{ width: "100%", textAlign: "center" }}>
-          <button
-            onClick={() => setShowHistory(true)}
-            className={style.btn}
-          >
+          <button onClick={() => setShowHistory(true)} className={style.btn}>
             History
           </button>
         </div>
       ) : (
         <>
           <div style={{ width: "100%", textAlign: "center" }}>
-            <button
-              onClick={() => setShowHistory(false)}
-              className={style.btn}
-            >
+            <button onClick={() => setShowHistory(false)} className={style.btn}>
               Hide
             </button>
           </div>
           <table border={1} className={style.table}>
             <thead>
             <tr>
-              <th colSpan={10} className={style.header}>Answer: {index + 1}</th>
+              <th colSpan={10} className={style.header}>
+                Answer: {index + 1}
+              </th>
             </tr>
             <tr>
               <th colSpan={10}>{data[index].word}</th>
@@ -52,24 +49,12 @@ export default function History({ data }: prop) {
               <th colSpan={10}>
                 <div className={style.slidebar}>
                   {index > 0 ? (
-                    <span
-                      onClick={() =>
-                        setIndex(index - 1)
-                      }
-                    >
-                                                back
-                                            </span>
+                    <span onClick={() => setIndex(index - 1)}>back</span>
                   ) : (
                     <span></span>
                   )}
                   {index < data.length - 1 ? (
-                    <span
-                      onClick={() =>
-                        setIndex(index + 1)
-                      }
-                    >
-                                                next
-                                            </span>
+                    <span onClick={() => setIndex(index + 1)}>next</span>
                   ) : (
                     <span></span>
                   )}
@@ -85,13 +70,9 @@ export default function History({ data }: prop) {
             <tbody>
             {data[index].meaning.map((detail, meaning_index) => {
               return (
-                <tr key={meaning_index}>
-                  <td className={style.order}>
-                    {meaning_index + 1}
-                  </td>
-                  <td className={style.part}>
-                    {detail.part}
-                  </td>
+                <tr key={getRandomNumber(true) + meaning_index}>
+                  <td className={style.order}>{meaning_index + 1}</td>
+                  <td className={style.part}>{detail.part}</td>
                   <td className={style.meaning} style={{ textAlign: "left" }}>
                     {detail.meaning}
                   </td>

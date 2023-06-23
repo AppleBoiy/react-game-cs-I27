@@ -6,7 +6,7 @@ type prop = {
 };
 
 export default function HealthBar({ hp }: prop) {
-  const [shake, setShake] = useState<boolean>(false);
+  const [shake, setShake] = useState(false);
 
   useEffect(() => {
     setShake(true);
@@ -14,6 +14,7 @@ export default function HealthBar({ hp }: prop) {
       setShake(false);
     }, 500);
   }, [hp]);
+
   return (
     <>
       <div className={`${style.bar} ${shake ? style.shake : ""}`}>
@@ -22,18 +23,16 @@ export default function HealthBar({ hp }: prop) {
           className={style.show}
           style={{
             width: `${(hp[0] / (hp[1] + hp[0] || 1)) * 100}%`,
-            backgroundColor: "#507742",
+            backgroundColor: "#507742"
           }}
-        >
-        </span>
+        ></span>
         <span
           className={style.show}
           style={{
             width: `${(hp[1] / (hp[1] + hp[0] || 1)) * 100}%`,
-            backgroundColor: "#b03b3b",
+            backgroundColor: "#b03b3b"
           }}
-        >
-        </span>
+        ></span>
       </div>
     </>
   );

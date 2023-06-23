@@ -10,75 +10,67 @@ export default function MyGame() {
   const [hp, setHP] = useState<[number, number]>([100, 0]);
   const [score, setScore] = useState<number>(0);
   const [answer, setAnswer] = useState<string>("");
-  const [player_input, setPlayerInput] = useState<string[]>([]);
-  const [finish_message, setFinishMessage] = useState<string>("");
+  const [playerInput, setPlayerInput] = useState<string[]>([]);
+  const [finishMessage, setFinishMessage] = useState<string>("");
   const [isOver, setOver] = useState<boolean>(false);
   const [history, setHistory] = useState<HistoryType[]>([]);
   const [meaning, setMeaning] = useState<Word_Detail[]>([]);
 
-  // รับคำใหม่ทุุกครั้งที่ score เพิ่ม
   useEffect(() => {
     async function getWord() {
-      // รับคำศัพท์แบบสุ่ม
       const range = Math.floor(getRandomNumber() * 7 + 1);
-
-      const new_word = String(await getRandomWord(range));
-      const hint_point = Math.floor(range * new_word.length);
+      const newWord = String(await getRandomWord(range));
+      const hintPoint = Math.floor(range * newWord.length);
 
       setPlayerInput(
-        new_word.split("").map((char, index) => {
-          return index === hint_point ? char : "";
+        newWord.split("").map((char, index) => {
+          return index === hintPoint ? char : "";
         })
       );
-      setAnswer(String(new_word));
+      setAnswer(String(newWord));
       if (score === 0) {
         setFinishMessage("");
       }
 
-      // เฉลยคำตอบ
-      return new_word;
+      return newWord;
     }
 
-    getWord().then((answer) => console.log("correct answer is: ", answer));
+    getWord().then((answer) => console.log("Correct answer is:", answer));
   }, [score]);
 
-  // เช็คคำตอบ
-  function onCheck(player_answer: string) {
+  function onCheck(playerAnswer: string) {
     if (isOver) {
       return;
     }
-    if (!player_answer) {
+    if (!playerAnswer) {
       setScore(score + 1);
       setHistory([...history, { word: answer, meaning }]);
       return;
     }
-    if (player_answer === answer) {
-      // ถ้าถูกให้รีเซ็ตค่า HP และเพิ่มคะแนน
-      // setScore(score + 1)
+    if (playerAnswer === answer) {
       setPlayerInput(answer.split(""));
       setHP([100, 0]);
     } else {
-      // ถ้าไม่ถูกลด HP และเพิ่มคำใบ้ จนกว่าจะเหลือ 1 ตัว
       setHP([hp[0] - 10, hp[1] + 10]);
       if (hp[0] - 10 <= 0) {
         setOver(true);
         setPlayerInput(answer.split(""));
         return;
       }
-      const not_hint_index: number[] = player_input
+      const notHintIndex: number[] = playerInput
         .map((char, index) => {
           return char ? -1 : index;
         })
         .filter((char) => char !== -1);
-      if (not_hint_index.length > 1) {
-        const hint_point = Math.floor(
-          getRandomNumber() * not_hint_index.length
+      if (notHintIndex.length > 1) {
+        const hintPoint = Math.floor(
+          getRandomNumber() * notHintIndex.length
         );
 
-        let new_player_input = [...player_input];
-        new_player_input[not_hint_index[hint_point]] =
-          answer[not_hint_index[hint_point]];
-        setPlayerInput(new_player_input);
+        let newPlayerInput = [...playerInput];
+        newPlayerInput[notHintIndex[hintPoint]] =
+          answer[notHintIndex[hintPoint]];
+        setPlayerInput(newPlayerInput);
       }
     }
   }
@@ -94,10 +86,10 @@ export default function MyGame() {
 
   return (
     <>
-      {isOver && <FinishWindow content={finish_message} onReset={reset} />}
+      {isOver && <FinishWindow content={finishMessage} onReset={reset} />}
       <HealthBar hp={hp} />
-      <h4 style={{ widows: "100%", textAlign: "end" }}>Your Score : {score}</h4>
-      <InputTap toInput={player_input} onSubmit={onCheck} isOver={isOver} />
+      <h4 style={{ widows: "100%", textAlign: "end" }}>Your Score: {score}</h4>
+      <InputTap toInput={playerInput} onSubmit={onCheck} isOver={isOver} />
       <hr style={{ margin: "50px 0" }} />
       <Meaning word={answer} setMeaning={setMeaning} />
       {history.length > 0 && <History data={history} />}
