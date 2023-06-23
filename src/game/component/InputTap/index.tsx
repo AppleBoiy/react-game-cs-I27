@@ -1,6 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import style from "./style.module.css";
-import { getRandomNumber } from "../../../api/randomModule";
 
 type prop = {
   toInput: string[];
@@ -76,7 +75,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
             if (char === "--") {
               return (
                 <span
-                  key={getRandomNumber(true)}
+                  key={char}
                   style={{ backgroundColor: "#E1BEA8" }}
                 >
                   {toInput[index]}
@@ -85,7 +84,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
             } else {
               return (
                 <span
-                  key={getRandomNumber(true)}
+                  key={char}
                   style={{
                     backgroundColor:
                       index === emptyIndex[currentEmptyIndex]

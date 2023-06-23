@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Word_Detail } from "../Meaning";
 import style from "./style.module.css";
-import { getRandomNumber } from "../../../api/randomModule";
 
 export type HistoryType = {
   word: string;
@@ -47,7 +46,7 @@ export default function History({ data }: prop) {
             </tr>
             <tr>
               <th colSpan={10}>
-                <div className={style.slidebar}>
+                <div className={style.slide_bar}>
                   {index > 0 ? (
                     <span onClick={() => setIndex(index - 1)}>back</span>
                   ) : (
@@ -70,7 +69,7 @@ export default function History({ data }: prop) {
             <tbody>
             {data[index].meaning.map((detail, meaning_index) => {
               return (
-                <tr key={getRandomNumber(true) + meaning_index}>
+                <tr key={detail.meaning}>
                   <td className={style.order}>{meaning_index + 1}</td>
                   <td className={style.part}>{detail.part}</td>
                   <td className={style.meaning} style={{ textAlign: "left" }}>
