@@ -27,7 +27,7 @@ export default function History({ data }: prop) {
                         onClick={() => setShowHistory(true)}
                         className={style.btn}
                     >
-                        ดูประวัติ
+                        History
                     </button>
                 </div>
             ) : (
@@ -37,7 +37,7 @@ export default function History({ data }: prop) {
                             onClick={() => setShowHistory(false)}
                             className={style.btn}
                         >
-                            ซ่อนประวัติ
+                            Hide
                         </button>
                     </div>
                     <table border={1} className={style.table}>
@@ -57,7 +57,7 @@ export default function History({ data }: prop) {
                                                     setIndex(index - 1)
                                                 }
                                             >
-                                                ย้อนกลับ
+                                                back
                                             </span>
                                         ) : (
                                             <span></span>
@@ -68,7 +68,7 @@ export default function History({ data }: prop) {
                                                     setIndex(index + 1)
                                                 }
                                             >
-                                                ถัดไป
+                                                next
                                             </span>
                                         ) : (
                                             <span></span>
