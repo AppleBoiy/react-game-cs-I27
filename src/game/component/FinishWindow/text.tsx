@@ -1,2 +1,2 @@
-const text: string[] = ['']
-export { text }
+const text: string[] = [""];
+export { text };

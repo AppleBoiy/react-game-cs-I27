@@ -1,13 +1,13 @@
 type FinishMessage = {
-    head: string
-    content: string
-}
+  head: string;
+  content: string;
+};
 
 const default_finish_message: FinishMessage = {
-    head: '',
-    content: '',
-}
+  head: "",
+  content: "",
+};
 
-export { default_finish_message }
+export { default_finish_message };
 
-export type { FinishMessage }
+export type { FinishMessage };

@@ -1,28 +1,28 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import MatLayout from './MatLayout'
-import ScorePage from './ScorePage/ScorePage'
-import Mygame from '../game/Mygame'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MatLayout from "./MatLayout";
+import ScorePage from "./ScorePage/ScorePage";
+import MyGame from "../game/MyGame";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <MatLayout />,
-        children: [
-            {
-                path: '/',
+  {
+    path: "/",
+    element: <MatLayout />,
+    children: [
+      {
+        path: "/",
 
-                element: <Mygame />,
-            },
-            {
-                path: 'scores',
-                element: <ScorePage />,
-            },
-        ],
-    },
-])
+        element: <MyGame />,
+      },
+      {
+        path: "scores",
+        element: <ScorePage />,
+      },
+    ],
+  },
+]);
 
 function InitRoute() {
-    return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
-export default InitRoute
+export default InitRoute;

@@ -1,15 +1,14 @@
 :root {
-    --bg-color: #e9e5d6;
+  --bg-color: #e9e5d6;
 }
 
 body {
-    background-color: var(--bg-color);
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-        sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 body.dark-mode {
-    --bg-color: black;
+  --bg-color: black;
 }

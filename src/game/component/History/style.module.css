@@ -1,36 +1,36 @@
 .table {
-    margin: 30px 0;
-    width: 100%;
+  margin: 30px 0;
+  width: 100%;
 }
 
-.slidebar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.slide_bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.slidebar > span {
-    cursor: pointer;
+.slide_bar > span {
+  cursor: pointer;
 }
 
-.slidebar > span:hover {
-    background-color: rgba(255, 255, 255, 0.334);
+.slide_bar > span:hover {
+  background-color: rgba(255, 255, 255, 0.334);
 }
 
 .btn {
-    padding: 5px 8px;
-    background-color: var(--mui-palette-primary-dark);
-    border: 1px solid var(--mui-palette-primary-dark);
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    margin-top: 20px;
-    transition: all 0.2s ease-in-out;
-    color: white;
+  padding: 5px 8px;
+  background-color: var(--mui-palette-primary-dark);
+  border: 1px solid var(--mui-palette-primary-dark);
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  transition: all 0.2s ease-in-out;
+  color: white;
 }
 
 .btn:hover {
-    scale: 1.05;
-    background-color: var(--mui-palette-primary-light);
+  scale: 1.05;
+  background-color: var(--mui-palette-primary-light);
 }

@@ -1,56 +1,65 @@
 .box_input_group {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    position: relative;
-    /* flex-wrap: wrap; */
-    /* width: ; */
-    /* width: 9rem; */
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  position: relative;
 }
+
 .box_input_group > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(199, 199, 199);
-    padding: 10px;
-    width: 1.5rem;
-    height: 1.5rem;
-    text-align: center;
-    /* vertical-align: bottom; */
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(199, 199, 199);
+  padding: 10px;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  /* vertical-align: bottom; */
+  border-radius: 10px;
 }
 
 .input_block {
-    text-align: center;
-    width: min-content;
-    margin: 0 auto;
+  text-align: center;
+  width: min-content;
+  margin: 0 auto;
 }
 
 .box_input_group > input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  opacity: 0;
 }
 
 .btn {
-    padding: 5px 10px;
-    background-color: #362706;
-    border: 1px solid #362706;
-    border-radius: 7px;
-    cursor: pointer;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-        sans-serif;
-    font-size: 1rem;
-    margin-top: 50px;
-    transition: all 0.3s ease-in-out;
-    color: white;
+  padding: 5px 10px;
+  background-color: #362706;
+  border: 1px solid #362706;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1rem;
+  margin-top: 50px;
+  transition: all 0.3s ease-in-out;
+  color: white;
 }
 
 .btn:hover {
-    scale: 1.2;
-    background-color: var(--mui-palette-primary-light);
+  scale: 1.2;
+  padding: 0.2rem 0.75rem;
+  border-radius: 10px;
+  border-color: black;
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 90px;
+  height: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(52, 52, 147, 0.7805497198879552) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
 }

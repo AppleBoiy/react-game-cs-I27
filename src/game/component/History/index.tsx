@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react'
-import { Word_Detail } from '../Meaning'
-import style from './style.module.css'
+import { useEffect, useState } from "react";
+import { Word_Detail } from "../Meaning";
+import style from "./style.module.css";
 
-type HistoryType = {
-    word: string
-    meaning: Word_Detail[]
-}
+export type HistoryType = {
+  word: string;
+  meaning: Word_Detail[];
+};
 
 type prop = {
-    data: HistoryType[]
-}
+  data: HistoryType[];
+};
 
 export default function History({ data }: prop) {
-    const [index, setIndex] = useState<number>(0)
-    const [showHistory, setShowHistory] = useState<boolean>(false)
+  const [index, setIndex] = useState<number>(0);
+  const [showHistory, setShowHistory] = useState<boolean>(false);
 
-    useEffect(() => {
-        setIndex(data.length - 1)
-    }, [showHistory])
+  useEffect(() => {
+    setIndex(data.length - 1);
+  }, [showHistory]);
 
     return (
         <>
@@ -110,5 +110,3 @@ export default function History({ data }: prop) {
         </>
     )
 }
-
-export type { HistoryType }
