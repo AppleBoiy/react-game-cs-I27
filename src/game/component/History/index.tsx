@@ -43,10 +43,7 @@ export default function History({ data }: prop) {
                     <table border={1} className={style.table}>
                         <thead>
                             <tr>
-                                <th colSpan={10}>ข้อที่ {index + 1}</th>
-                            </tr>
-                            <tr>
-                                <th colSpan={10}>{data[index].word}</th>
+                                <th colSpan={10}>Answer: {index + 1}</th>
                             </tr>
                             <tr>
                                 <th colSpan={10}>
