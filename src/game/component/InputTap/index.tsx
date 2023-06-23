@@ -88,7 +88,7 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                     backgroundColor:
                         index ===
                         empty_index[current_empty_index]
-                            ? 'lightgreen'
+                            ? '#efa300'
                             : 'lightgray',
                 }}>
                   {char}
