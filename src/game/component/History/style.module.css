@@ -3,18 +3,18 @@
     width: 100%;
 }
 
-.slidebar {
+.slide_bar {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.slidebar > span {
+.slide_bar > span {
     cursor: pointer;
 }
 
-.slidebar > span:hover {
+.slide_bar > span:hover {
     background-color: rgba(255, 255, 255, 0.334);
 }
 

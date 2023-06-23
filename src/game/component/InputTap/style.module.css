@@ -3,10 +3,9 @@
     gap: 0.75rem;
     justify-content: center;
     position: relative;
-    /* flex-wrap: wrap; */
-    /* width: ; */
-    /* width: 9rem; */
+
 }
+
 .box_input_group > span {
     display: flex;
     align-items: center;
@@ -43,7 +42,7 @@
     border-radius: 7px;
     cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-        sans-serif;
+    sans-serif;
     font-size: 1rem;
     margin-top: 50px;
     transition: all 0.3s ease-in-out;
@@ -52,7 +51,6 @@
 
 .btn:hover {
     scale: 1.2;
-    background-color: var(--mui-palette-primary-light);
     padding: 0.2rem 0.75rem;
     border-radius: 10px;
     border-color: black;
@@ -60,11 +58,10 @@
     cursor: pointer;
     width: 90px;
     height: 50px;
-    background: rgb(2, 0, 36);
     background: linear-gradient(
-        90deg,
-        rgba(2, 0, 36, 1) 0%,
-        rgba(52, 52, 147, 0.7805497198879552) 35%,
-        rgba(0, 212, 255, 1) 100%
+            90deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(52, 52, 147, 0.7805497198879552) 35%,
+            rgba(0, 212, 255, 1) 100%
     );
 }
