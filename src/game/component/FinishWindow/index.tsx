@@ -3,9 +3,10 @@ import style from './window.module.css'
 
 type prop = {
     content: string
+    onReset: Function
 }
 
-export default function FinishWindow({ content }: prop) {
+export default function FinishWindow({ content, onReset }: prop) {
     return (
         <>
             <hr style={{ margin: '30px 0' }} />
@@ -18,8 +19,12 @@ export default function FinishWindow({ content }: prop) {
                 {content}
             </h2>
             <div style={{ width: '100%', textAlign: 'center' }}>
-                <button className={style.btn} style={{ fontSize: '1.25rem' }}>
-                    Retry
+                <button
+                    onClick={() => onReset()}
+                    className={style.btn}
+                    style={{ fontSize: '1.25rem' }}
+                >
+                    เริ่มใหม่อีกครั้ง
                 </button>
             </div>
             <hr style={{ margin: '30px 0' }} />
