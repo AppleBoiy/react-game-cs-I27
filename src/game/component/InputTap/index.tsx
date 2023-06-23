@@ -79,7 +79,12 @@ export default function InputTap({ toInput, onSubmit, isOver }: prop) {
                         // console.log(index===empty_index[current_empty_index])
                         if (char === '--') {
                             return (
-                                <span style={{ backgroundColor: 'white' }}>
+                                <span
+                                    style={{
+                                        backgroundColor: 'white',
+                                        border: '3px solid rgb(231,216,158) ',
+                                    }}
+                                >
                                     {toInput[index]}
                                 </span>
                             )

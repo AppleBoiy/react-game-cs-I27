@@ -1,14 +1,20 @@
 body {
     margin: 0;
-    background-image: url('game/component/images/f57.jpg');
+    /* background-image: url('game/component/images/f57.jpg'); */
     /* background-repeat: no-repeat; */
     background-position: top left;
     /* opacity:0.7 ; */
+    background: rgb(179, 199, 51);
+    background: linear-gradient(
+        90deg,
+        rgba(179, 199, 51, 1) 0%,
+        rgba(246, 242, 210, 1) 0%
+    );
 }
 
-.bg {
+/* .bg {
     margin: 0;
     background-image: url('game/component/images/f57.jpg');
     background-repeat: no-repeat;
     background-position: top right;
-}
+} */
