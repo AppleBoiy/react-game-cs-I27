@@ -2,6 +2,8 @@
 
 # Words Confuse
 
+<img src=".github/screenshot.png" alt="">
+
 Welcome to Words Confuse by [CS-I27 Team](https://github.com/orgs/CSCMU-65s/teams/mycos-camp-i27/members)! This project
 is part of the Computer Skills Training Camp organized by [MycosTech]. The
 goal
