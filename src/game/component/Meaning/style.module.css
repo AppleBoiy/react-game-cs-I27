@@ -5,11 +5,13 @@
   text-align: center;
   margin: 0 auto 20px;
   box-shadow: 0 0 0 1px #666;
+  background-color: #C9B4A6;
+
 }
 
 .table tr > * {
   padding: 5px;
-  /* color: #b03b3b; */
+  
 }
 
 .table th:first-child {
@@ -26,3 +28,4 @@
   background-color: #484338;
   color: aliceblue;
 }
+
