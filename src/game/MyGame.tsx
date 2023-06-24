@@ -20,7 +20,7 @@ export default function Mygame() {
   useEffect(() => {
     async function getWord() {
       // รับคำศัพท์แบบสุ่ม
-      const range = Math.floor(getRandomNumber() * 6 + 3);
+      const range = Math.floor(getRandomNumber() * 7 + 1);
 
       const new_word = String(await getRandomWord(range));
       const hint_point = Math.floor(range * new_word.length);
