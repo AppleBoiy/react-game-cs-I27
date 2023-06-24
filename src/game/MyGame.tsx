@@ -6,7 +6,7 @@ import FinishWindow from "./component/FinishWindow";
 import Meaning, { Word_Detail } from "./component/Meaning";
 import History, { HistoryType } from "./component/History";
 
-export default function Mygame() {
+export default function MyGame() {
   const [hp, setHP] = useState<[number, number]>([100, 0]);
   const [score, setScore] = useState<number>(0);
   const [answer, setAnswer] = useState<string>("");
@@ -20,7 +20,7 @@ export default function Mygame() {
   useEffect(() => {
     async function getWord() {
       // รับคำศัพท์แบบสุ่ม
-      const range = Math.floor(getRandomNumber() * 6 + 3);
+      const range = Math.floor(getRandomNumber() * 5 + 3);
 
       const new_word = String(await getRandomWord(range));
       const hint_point = Math.floor(range * new_word.length);
