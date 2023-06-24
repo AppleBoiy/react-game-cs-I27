@@ -76,7 +76,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- MycosTech for organizing the Computer Skills Training Camp
+- [MycosTech] for organizing the Computer Skills Training Camp
 - [random-words](https://www.npmjs.com/package/random-words) package for word generation
 - [DictionaryAPI](https://api.dictionaryapi.dev/api/v2/entries/en) for word meanings
 
