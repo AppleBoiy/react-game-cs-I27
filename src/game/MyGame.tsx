@@ -23,7 +23,7 @@ export default function MyGame() {
       const range = Math.floor(getRandomNumber() * 5 + 3);
 
       const new_word = String(await getRandomWord(range));
-      const hint_point = Math.floor(range * new_word.length);
+      const hint_point = Math.floor(getRandomNumber() * new_word.length);
 
       setPlayerInput(
         new_word.split("").map((char, index) => {
