@@ -3,12 +3,8 @@
 }
 
 body {
-  background-color: var(--bg-color);
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-body.dark-mode {
-  --bg-color: black;
+    background-color: #EEE5D1;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
