@@ -78,6 +78,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - [MycosTech] for organizing the Computer Skills Training Camp
 - [random-words](https://www.npmjs.com/package/random-words) package for word generation
-- [DictionaryAPI](https://api.dictionaryapi.dev/api/v2/entries/en) for word meanings
+- [DictionaryAPI](https://github.com/meetDeveloper/freeDictionaryAPI) for word meanings
 
 [MycosTech]: https://www.mycostech.com
